@@ -37,5 +37,11 @@
             <version>2.24.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-devtools-v138</artifactId>
+            <version>4.19.1</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 </project>
