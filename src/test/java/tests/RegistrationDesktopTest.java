@@ -1,9 +1,7 @@
 package tests;
 
 import io.qameta.allure.*;
-import io.qameta.allure.junit5.AllureJunit5;
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.*;
@@ -14,7 +12,6 @@ import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@ExtendWith(AllureJunit5.class)
 @Epic("Registrierung")
 @Feature("Desktop Registrierung")
 public class RegistrationDesktopTest {

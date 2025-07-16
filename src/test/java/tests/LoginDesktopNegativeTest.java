@@ -6,13 +6,11 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pageObjects.HomePage;
 import pageObjects.LoginPage;
-import utils.ConfigReader;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @Epic("Login")
-@Feature("Desktop Login")
-public class LoginDesktopTest {
+@Feature("Negativer Desktop Login")
+public class LoginDesktopNegativeTest {
     private static final String BASE_URL = "https://meinesuppe.de";
     private WebDriver driver;
     private HomePage homePage;
@@ -27,23 +25,21 @@ public class LoginDesktopTest {
     }
 
     @Test
-    @Story("Login mit gültigen Daten")
+    @Story("Login mit ungültigen Zugangsdaten")
     @Severity(SeverityLevel.CRITICAL)
-    @DisplayName("Erfolgreicher Login am Desktop")
-    public void testLoginDesktop() {
-        String username = ConfigReader.get("username");
-        String password = ConfigReader.get("password");
+    @DisplayName("Login mit falschem Benutzernamen und Passwort")
+    public void testLoginWithInvalidCredentials() {
+        String invalidUsername = "invalidUser" + System.currentTimeMillis();
+        String invalidPassword = "invalidPass" + System.nanoTime();
 
         homePage.goToMeinKonto();
         waitShort();
 
         loginPage = new LoginPage(driver);
-        loginPage.login(username, password);
+        loginPage.login(invalidUsername, invalidPassword);
         waitShort();
 
-        assertEquals(username, loginPage.getGreetingName());
-        assertTrue(driver.getCurrentUrl().endsWith("/mein-konto/"));
-        assertEquals("Startseite / Mein Konto", homePage.getBreadcrumbText());
+        assertTrue(loginPage.isErrorMessageVisible());
     }
 
     @Step("Kurze Wartezeit")
