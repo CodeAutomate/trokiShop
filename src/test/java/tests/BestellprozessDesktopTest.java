@@ -1,4 +1,4 @@
-package tests.desktop;
+package tests;
 
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
