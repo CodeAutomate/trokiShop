@@ -9,9 +9,12 @@ pipeline {
         }
         stage('Build & Test') {
             steps {
-                script {
-                    bat 'mvn clean test'
-                }
+                bat 'mvn clean test'
+            }
+        }
+        stage('Allure Report') {
+            steps {
+                allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
             }
         }
     }
