@@ -7,9 +7,16 @@ pipeline {
                 checkout scm
             }
         }
+
+        stage('API Tests') {
+            steps {
+                bat 'mvn -Dtest=api.* test'
+            }
+        }
+
         stage('Build & Test') {
             steps {
-                bat 'mvn clean -Dtest=LoginDesktopTest test'
+                bat 'mvn clean test'
             }
         }
     }
