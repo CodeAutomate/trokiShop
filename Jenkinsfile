@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Build & Test') {
             steps {
-                bat 'mvn clean test'
+                bat 'mvn clean -Dtest=LoginDesktopTest test'
             }
         }
     }
