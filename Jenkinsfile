@@ -10,7 +10,7 @@ pipeline {
 
         stage('API Tests') {
             steps {
-                bat 'mvn -Dtest=api.* test'
+                bat 'mvn -Dtest=api.*Tests test'
             }
         }
 
